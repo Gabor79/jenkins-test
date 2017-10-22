@@ -6,7 +6,7 @@ pipeline {
             steps {
                 bat "mvn clean install"
                 script{
-                    shortCommit = bat "git log -n 1 --pretty=format:'%h'"
+                    shortCommit = bat(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
                     echo shortCommit
                 }
             }
