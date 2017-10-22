@@ -1,11 +1,11 @@
+def shortCommit ='UNKNOWN'
 pipeline {
     agent any
-
     stages {
         stage('Build') {
             steps {
                 bat "mvn clean install"
-                def shortCommit = sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
+                def shortCommit = bat "git log -n 1 --pretty=format:'%h'"
                 echo shortCommit
             }
         }
