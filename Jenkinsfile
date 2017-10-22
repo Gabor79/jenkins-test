@@ -1,10 +1,13 @@
-def shortCommit ='UNKNOWN'
 pipeline {
     agent any
+
     stages {
         stage('Build') {
-            script{
-                "mvn clean install"
+            steps {
+                script{
+                    "mvn clean install"
+                }
+                
             }
         }
         stage('Test') {
