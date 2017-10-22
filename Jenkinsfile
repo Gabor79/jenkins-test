@@ -5,8 +5,10 @@ pipeline {
         stage('Build') {
             steps {
                 bat "mvn clean install"
-                shortCommit = bat "git log -n 1 --pretty=format:'%h'"
-                echo shortCommit
+                script{
+                    shortCommit = bat "git log -n 1 --pretty=format:'%h'"
+                    echo shortCommit
+                }
             }
         }
         stage('Test') {
